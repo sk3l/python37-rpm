@@ -7,7 +7,7 @@
 # pybasever without the dot:
 %global pyshortver 37
 
-Name: python%{pybasever}
+Name: python
 Summary: Version %{pybasever} of the Python interpreter
 URL: https://www.python.org/
 
@@ -434,6 +434,7 @@ echo STARTING: BUILD OF PYTHON FOR CONFIGURATION
 # Normally, %%configure looks for the "configure" script in the current
 # directory.
 # Since we changed directories, we need to tell %%configure where to look.
+export LDFLAGS="-Wl,-rpath=%{_prefix}/%{_lib}"
 
 %configure \
   --enable-ipv6 \
